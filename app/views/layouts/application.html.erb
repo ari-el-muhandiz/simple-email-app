@@ -8,7 +8,8 @@
 </head>
 <body>
   <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg.html_safe, :id => "flash_#{name}" if (msg.is_a?(String))%>
+    <%= content_tag :div, msg.html_safe, :class=> "message",
+      :id => "flash_#{name}" if (msg.is_a?(String))%>
   <% end %>
 <%= yield %>
 
