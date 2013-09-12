@@ -1,0 +1,9 @@
+<%= form_tag("/send_email", method: "get") do %>
+  <%= label_tag(:subject, "Subject : ") %>
+  <%= text_field_tag(:subject) %>
+  <%= label_tag(:to, "To:") %>
+  <%= text_field_tag(:to) %>
+  <%= submit_tag("Send") %>
+<% end %>
+
+<%= link_to 'sign out', destroy_user_session_path, :method => :delete %>
