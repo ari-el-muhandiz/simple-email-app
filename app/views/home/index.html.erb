@@ -1,9 +1,24 @@
-<%= form_tag("/send_email", method: "get") do %>
-  <%= label_tag(:subject, "Subject : ") %>
-  <%= text_field_tag(:subject) %>
-  <%= label_tag(:to, "To:") %>
-  <%= text_field_tag(:to) %>
-  <%= submit_tag("Send") %>
-<% end %>
+<div class="container main-container">
+  <div class="row">
+    <div class="span6">
+      <div class="wbody">
+      <%= form_tag("/send_email", method: "get") do %>
+        <fieldset>
+          <%= label_tag(:subject) %>
+          <%= text_field_tag(:subject) %>
+        </fieldset>
 
-<%= link_to 'sign out', destroy_user_session_path, :method => :delete %>
+        <fieldset>
+          <%= label_tag(:to) %>
+          <%= text_field_tag(:to) %>
+        </fieldset>
+
+        <fieldset>
+          <%= submit_tag "send", class: 'btn btn-primary' %>
+        </fieldset>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

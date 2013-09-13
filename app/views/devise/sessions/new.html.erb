@@ -1,27 +1,21 @@
-<div class="container">
-  <div class="row">
-    <div class="span4 offset4">
-      <div id="box">
-        <div id="whead">
-          <h3>Sign in</h3>
-        </div>
-        <div id="wbody">
-          <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-            <fieldset>
-              <%= f.label :email %>
-              <%= f.email_field :email, :autofocus => true %>
-            </fieldset>
-            <fieldset>
-              <%= f.label :password %>
-              <%= f.password_field :password %>
-            </fieldset>
-            <fieldset>
-              <%= f.submit "Sign in", class: 'btn btn-primary' %>
-            </fieldset>
-          </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
+<div class="whead">
+  <%= image_tag "logo.png" %>
+</div>
+
+<div class="wbody">
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <fieldset>
+      <%= f.label :email %>
+      <%= f.email_field :email, :autofocus => true %>
+    </fieldset>
+    <fieldset>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </fieldset>
+    <fieldset>
+      <%= f.submit "Sign in", class: 'btn btn-primary' %>
+    </fieldset>
+  </div>
+  <% end %>
 </div>
 

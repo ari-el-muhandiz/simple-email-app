@@ -15,10 +15,32 @@
 
 body {
   min-width: 287px;
-  margin: 15px auto;
   font-size: 12px;
   font-family:Verdana, Geneva, arial, Helvetica, sans-serif;
   background-color: #f4f4f4;
+}
+
+/*resetter*/
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+@mixin repeat_background($file, $height) {
+  width: 100%;
+  background: #fff url($file) repeat-x left top;
+  height: $height;
+}
+
+@mixin margin_left($pos) {
+  margin-left: $pos;
+}
+
+@mixin margin_top($pos) {
+  margin-top: $pos;
 }
 
 @mixin style_input {
@@ -27,18 +49,73 @@ body {
     input[type="email"], textarea {
       width: 98.72%;
     }
+    input[type="submit"] {
+      margin-top: 40px;
+      padding: 6px 20px;
+    }
   }
 }
 
-@mixin mrgn_top($pos) {
-  margin-top: $pos;
+header#page_header {
+  img#logo {
+    @include margin_top(5px);
+  }
+  #nav-menu {
+    @include margin_top(5px);
+    float: right;
+    #navbar {
+      background-color: #D0F5A9;
+      width: 80px;
+      margin-top: -5px;
+      height: 67px;
+      #main-nav{
+        height: 67px;
+        img {
+          margin: 12px 14px;
+        }
+        .caret {
+          margin: 25px -9px;
+        }
+      }
+    }
+  }
+  @include repeat_background('header.png', 67px);
 }
 
+footer#page_footer {
+  @include repeat_background('footer.png', 50px);
+  color: #fff;
+  font-size: 16px;
+  #copyright {
+    padding-top: 13px;
+    padding-left: 80px;
+  }
+}
+
+.main-container {
+  min-height: 500px;
+  background-color: #ffffff;
+  margin: 10px auto;
+}
+
+.wbody{
+  @include style_input;
+}
+
+/*This is for layout sign*/
 #box{
-  #wbody{
-    @include style_input;
+  .whead{
+    @include margin_left(25%);
   }
-  @include mrgn_top(100px);
+  .wbody{
+    @include margin_top(50px);
+  }
+  @include margin_top(100px);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  background-color: #ffffff;
+  padding: 30px;
+  width: 380px;
+  height: 100%;
 }
 
 
@@ -56,6 +133,8 @@ body {
   -webkit-border-radius: 3px;
   text-align:center;
   margin: 0 auto 15px;
+  font-size: 14px;
+  padding: 10px;
 }
 
 #flash_error {
@@ -64,9 +143,11 @@ body {
 
 #flash_alert {
   @include notice_box(#e0d300, #ffffcc);
+  color: #b3a800;
 }
 
 #flash_notice {
   @include notice_box(#8ec4df, #dffaff);
+  color: #719cb2;
 }
 

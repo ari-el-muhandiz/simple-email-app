@@ -7,11 +7,50 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg.html_safe, :class=> "message",
-      :id => "flash_#{name}" if (msg.is_a?(String))%>
-  <% end %>
-<%= yield %>
+  <div class="full_container">
+    <header id="page_header">
+      <div class="container">
+      <div class="row">
+        <div class="span4" id="logo">
+          <%= image_tag 'logo1.png' %>
+        </div>
+        <div class="span8">
+          <nav id="nav-menu">
+            <div class="dropdown" id="navbar">
+              <ul class="nav">
+                <li>
+                  <a class="dropdown-toggle" data-toggle="dropdown" 
+                    id="main-nav" data-target="#" href="<%= root_path %>">
+                    <%= image_tag 'missing_avatart_thumb.png' %>
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li>
+                      <%= link_to 'sign out', destroy_user_session_path, 
+                        :method => :delete if user_signed_in? %>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+      </div>
+    </header>
 
+    <%= flash_message %>
+    <%= yield %>
+
+    <footer id="page_footer"> 
+      <div class="container">
+        <div class="row">
+          <div class="offset4" id="copyright">
+            Copyright 2013
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
