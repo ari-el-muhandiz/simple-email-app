@@ -13,6 +13,20 @@
  */
 @import "bootstrap";
 
+.close {
+  float: right;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 20px;
+  position: relative;
+  top: -20px !important;
+  left: -1px;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+
 body {
   min-width: 287px;
   font-size: 12px;
@@ -93,8 +107,10 @@ footer#page_footer {
 }
 
 .main-container {
+  .email-content {
+    margin: 10px 10px !important;
+  }
   min-height: 500px;
-  background-color: #ffffff;
   margin: 10px auto;
 }
 
@@ -103,7 +119,7 @@ footer#page_footer {
 }
 
 /*This is for layout sign*/
-#box{
+.box{
   .whead{
     @include margin_left(25%);
   }

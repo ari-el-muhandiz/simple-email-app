@@ -4,6 +4,6 @@ Emailapp::Application.routes.draw do
   }
 
   root 'home#index'
+  resources :emails
 
-  get 'send_email' => 'home#send_email'
 end

@@ -1,23 +1,95 @@
 <div class="container main-container">
   <div class="row">
-    <div class="span6">
+    <div class="span6 box email-content">
+      <%#= validation_message(@email) %>
+      <div class="whead">
+        <h2>Email Form</h2>
+      </div>
       <div class="wbody">
-      <%= form_tag("/send_email", method: "get") do %>
+      <%= form_for @email do |f|%>
         <fieldset>
-          <%= label_tag(:subject) %>
-          <%= text_field_tag(:subject) %>
+          <%= f.label :subject %>
+          <%= f.text_field :subject %>
         </fieldset>
 
         <fieldset>
-          <%= label_tag(:to) %>
-          <%= text_field_tag(:to) %>
+          <%= f.label :to, "To(*)" %>
+          <%= f.text_field :to %>
+        </fieldset>
+        
+        <fieldset>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </fieldset>
+        
+        <fieldset>
+          <%= f.label :day %>
+          <%= f.text_field :day %>
+        </fieldset>
+        
+        <fieldset>
+          <%= f.label :date %>
+          <%= f.text_field :date %>
         </fieldset>
 
         <fieldset>
-          <%= submit_tag "send", class: 'btn btn-primary' %>
+          <%= f.label :time %>
+          <%= f.text_field :time %>
+        </fieldset>
+
+        <fieldset>
+          <%= f.label :address %>
+          <%= f.text_field :address %>
+        </fieldset>
+
+        <fieldset>
+          <%= f.submit "send", class: 'btn btn-primary' %>
         </fieldset>
       <% end %>
       </div>
+    </div>
+    
+    <div class="span6 box email-content">
+      <section>
+        <article>
+          <header>
+            <h2>Email Template</h2>
+            <p>
+              Here is email template for invitation to interview. In this template, I use sign {} as pre-defined variable.
+            </p>
+          </header>
+          <p>
+            Dear {name},<br/>
+          </p>
+          <p>
+            Thank you for interest in joining our company. After having a close
+            look at your resume, we would like to meet you to find more
+            about you as our software engineer candidate.<br/>
+          </p>
+          <p>
+            We invite you to our office to have interview and competency test with
+            HRD team at:
+            <br/>
+            Day  : {day}
+            <br/>
+            Date : {date}
+            <br/>
+            Time : {time}
+            <br/>
+            Address : {address}
+            <br/>
+          </p>
+          <p>
+            We look forward to meeting you in person. Please reply to this email
+            to confirm your attendance at the interview. If you require any
+            special arrangements for the interview schedule, please let us know.<br/>
+            <p/>
+          <p>
+            Don't forget to bring your resume and other supporting docs.
+            Thank you.
+          </p>
+        </article>
+      </section>
     </div>
   </div>
 </div>
