@@ -91,4 +91,7 @@ Emailapp::Application.configure do
     enable_starttls_auto: true  
   }
 
+  config.action_controller.asset_host = 'http://fast-brushlands-4249.herokuapp.com'
+  config.action_mailer.asset_host = config.action_controller.asset_host
+
 end
