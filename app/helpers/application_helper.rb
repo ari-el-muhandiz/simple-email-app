@@ -10,14 +10,14 @@ module ApplicationHelper
     end
   end
 
-  def validation_message(obj)
-    messages = obj.errors.full_messages
+  def validation_message(obj, key)
+    messages = obj.errors.messages[key]
     return if messages.blank?
-    msg = "<div class='field_with_errors'>"
-    obj.errors.full_messages.inject(msg) do |msg, element|
+    msg = "<div class='validation_error'>"
+    val_msg = messages.inject(msg) do |msg, element|
       msg = msg + element.downcase
-      msg << '</div'
-      msg.html_safe
-    end
+      msg << "&nbsp;&nbsp;&nbsp;"
+    end << "</div>"
+    val_msg.html_safe
   end
 end

@@ -1,7 +1,6 @@
 <div class="container main-container">
   <div class="row">
     <div class="span6 box email-content">
-      <%#= validation_message(@email) %>
       <div class="whead">
         <h2>Email Form</h2>
       </div>
@@ -13,7 +12,7 @@
         </fieldset>
 
         <fieldset>
-          <%= f.label :to, "To(*)" %>
+          <%= f.label :to, "To(*)" %> <%= validation_message(@email, :to) %>
           <%= f.text_field :to %>
         </fieldset>
         

@@ -167,3 +167,12 @@ footer#page_footer {
   color: #719cb2;
 }
 
+.validation_error {
+  color: red;
+  font-size: 12px;
+}
+
+.field_with_errors label {
+  float: left;
+  margin-right: 15px;
+}
