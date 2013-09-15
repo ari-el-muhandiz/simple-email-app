@@ -6,6 +6,7 @@ gem 'rails', '4.0.0'
 gem 'sqlite3', :group => [:development, :test]
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
