@@ -1,0 +1,64 @@
+<div class="container main-container">
+  <div class="row">
+    <div class="span6 box email-content">
+      <div class="whead">
+        <h2>Email Form</h2>
+      </div>
+      <div class="wbody">
+      <%= form_for @email do |f|%>
+        <fieldset>
+          <%= f.label :subject %>
+          <%= f.text_field :subject %>
+        </fieldset>
+
+        <fieldset>
+          <%= f.label :to, "To(*)" %> <%= validation_message(@email, :to) %>
+          <%= f.text_field :to %>
+        </fieldset>
+
+        <% (@email.params).each do |p| %>
+        <fieldset>
+          <%= f.label p.to_sym %>
+          <%= f.text_field p.to_sym %>
+        </fieldset>
+       <% end %>
+
+        <fieldset>
+          <% disable = @email.content.blank? ? true : false %>
+          <%= f.submit "send", class: 'btn btn-primary', :disabled => disable %>
+        </fieldset>
+      <% end %>
+      </div>
+    </div>
+    
+    <div class="span6 box email-content">
+      <section>
+        <article>
+          <header>
+            <h2>Email Template</h2>
+          </header>
+          <p>
+            <%= check_content(@email.content) %>
+          </p>
+          <footer>
+            <a data-target="#myModal" role="button" class="btn" data-toggle="modal">Upload</a>
+            <%= modal_box("myModal", "Upload Modal", "Store") do %>
+              <% form_for @email, url: :store_file_emails do |f| %>
+                <div class="modal-body">
+                  <%= f.label :content, "*File must in html format", 
+                    class: "validation_error"%>
+                  <%= f.file_field :content %>
+                </div>
+                <div class="modal-footer">
+                  <%= f.submit "store", class: 'btn btn-primary' %>
+                </div>
+              <% end %>
+            <% end %>
+          </footer>
+        </article>
+      </section>
+    </div>
+  </div>
+</div>
+
+

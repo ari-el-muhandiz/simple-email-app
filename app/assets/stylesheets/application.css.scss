@@ -153,16 +153,16 @@ footer#page_footer {
   padding: 10px;
 }
 
-#flash_error {
+.flash_error {
   @include notice_box(#fbb, #fdd);
 }
 
-#flash_alert {
+.flash_alert {
   @include notice_box(#e0d300, #ffffcc);
   color: #b3a800;
 }
 
-#flash_notice {
+.flash_notice {
   @include notice_box(#8ec4df, #dffaff);
   color: #719cb2;
 }

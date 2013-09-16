@@ -4,6 +4,11 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 
 gem 'sqlite3', :group => [:development, :test]
+
+group :development do
+  gem 'debugger'
+end
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'

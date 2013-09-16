@@ -3,7 +3,11 @@ Emailapp::Application.routes.draw do
     :sessions => "sessions"
   }
 
-  root 'home#index'
-  resources :emails
+  root 'emails#index'
+  resources :emails, only: [:index, :create] do
+    collection do
+      post 'store_file'
+    end
+  end
 
 end
