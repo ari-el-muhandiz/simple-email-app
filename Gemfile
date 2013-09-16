@@ -12,6 +12,7 @@ end
 group :production do
   gem 'pg'
   gem 'rails_12factor'
+  gem 'aws-ses', '~> 0.4.4', require: 'aws/ses'
 end
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
