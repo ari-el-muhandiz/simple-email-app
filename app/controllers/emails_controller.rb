@@ -21,7 +21,7 @@ class EmailsController < ApplicationController
     file = params[:email][:content]
     extension = file.content_type
     if extension == "text/html"
-      Email.write_json_file(content: file.read)
+      Email.write_json_file(content: file.read.force_encoding('cp1252'))
       flash[:notice] = "File has been successfully stored to file system" 
     else
       flash[:error] = "File must in html format"
