@@ -16,7 +16,7 @@
           <%= f.text_field :to %>
         </fieldset>
 
-        <% (@email.params).each do |p| %>
+        <% (@email.dynamic_params).each do |p| %>
         <fieldset>
           <%= f.label p.to_sym %>
           <%= f.text_field p.to_sym %>

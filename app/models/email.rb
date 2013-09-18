@@ -3,7 +3,7 @@ require 'json'
 class Email
   include ActiveModel::Model
 
-  attr_accessor :to, :subject, :cc, :content, :params
+  attr_accessor :to, :subject, :cc, :content, :dynamic_params
   validates_presence_of :to
   validates_presence_of :content, :message => "upload email template first, 
                                                before sending an email"
@@ -29,8 +29,9 @@ class Email
     #get the content first
     read_json_file
     if content
-      parse_parameter_in_file
-      #build setter and getter for dynamic parameter, if content exist
+      @order = Order.new
+      self.dynamic_params = @order.parse_parameter_in_file(self)
+      #set the value for dynamic parameter, if content exist
       attr.each {|key, value| self.send("#{key}=", value) if key}
     end
   end
@@ -41,15 +42,10 @@ class Email
     end
   end
 
-  #Read Json file and parse the content and build setter and getter
-  def parse_parameter_in_file
-    @params = content.scan(/{.+}/).map{|s| s.gsub(/{/, '').gsub(/}/, '')}
-    Email.build_dynamic_method(@params)
-  end
 
   #Replace predefined variable with new variable that user has inputed
   def get_new_content
-    @params.each do |p|
+    dynamic_params.each do |p|
       @content.gsub!(/{#{Regexp.escape(p)}}/, self.send(p.to_sym)) if self.send(p.to_sym).present?
     end
   end
