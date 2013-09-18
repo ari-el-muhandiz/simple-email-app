@@ -5,18 +5,18 @@
         <h2>Email Form</h2>
       </div>
       <div class="wbody">
-      <%= form_for @email do |f|%>
+      <%= form_for @order, url: :emails do |f|%>
         <fieldset>
           <%= f.label :subject %>
           <%= f.text_field :subject %>
         </fieldset>
 
         <fieldset>
-          <%= f.label :to, "To(*)" %> <%= validation_message(@email, :to) %>
+          <%= f.label :to, "To(*)" %> <%= validation_message(@order, :to) %>
           <%= f.text_field :to %>
         </fieldset>
 
-        <% (@email.dynamic_params).each do |p| %>
+        <% (@order.dynamic_params).each do |p| %>
         <fieldset>
           <%= f.label p.to_sym %>
           <%= f.text_field p.to_sym %>
@@ -24,7 +24,7 @@
        <% end %>
 
         <fieldset>
-          <% disable = @email.content.blank? ? true : false %>
+          <% disable = @order.content.blank? ? true : false %>
           <%= f.submit "send", class: 'btn btn-primary', :disabled => disable %>
         </fieldset>
       <% end %>
@@ -38,12 +38,12 @@
             <h2>Email Template</h2>
           </header>
           <p>
-            <%= check_content(@email.content) %>
+            <%= check_content(@order.content) %>
           </p>
           <footer>
             <a data-target="#myModal" role="button" class="btn" data-toggle="modal">Upload</a>
             <%= modal_box("myModal", "Upload Modal", "Store") do %>
-              <% form_for @email, url: :store_file_emails do |f| %>
+              <% form_for @order, url: :store_file_emails do |f| %>
                 <div class="modal-body">
                   <%= f.label :content, "*File must in html format", 
                     class: "validation_error"%>

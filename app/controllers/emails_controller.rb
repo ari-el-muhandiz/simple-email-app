@@ -2,14 +2,14 @@ class EmailsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @email = Email.new
+    @order = Order.new
   end
 
   def create
-    @email = Email.new(params[:email])
-    if @email.valid?
-      @email.get_new_content
-      UserMailer.welcome_email(@email).deliver
+    @order = Order.new(params[:order])
+    if @order.valid?
+      @order.get_new_content
+      UserMailer.welcome_email(@order).deliver
       redirect_to root_path, notice: 'Email has been sent'
     else
       render 'index'
@@ -18,7 +18,7 @@ class EmailsController < ApplicationController
 
   #read uploaded file and stored to file system
   def store_file
-    file = params[:email][:content]
+    file = params[:order][:content]
     extension = file.content_type
     if extension == "text/html"
       Email.write_json_file(content: file.read.force_encoding('cp1252'))
