@@ -16,12 +16,20 @@
           <%= f.text_field :to %>
         </fieldset>
 
-        <% (@order.dynamic_params).each do |p| %>
         <fieldset>
-          <%= f.label p.to_sym %>
-          <%= f.text_field p.to_sym %>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
         </fieldset>
-       <% end %>
+
+        <fieldset>
+          <%= f.label :address %>
+          <%= f.text_field :address %>
+        </fieldset>
+
+        <fieldset>
+          <%= f.label :date %>
+          <%= f.text_field :date %>
+        </fieldset>
 
         <fieldset>
           <% disable = @order.content.blank? ? true : false %>
