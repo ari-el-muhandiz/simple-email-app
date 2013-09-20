@@ -9,6 +9,7 @@ class Email
     end
   end
   
+  #instance method
   def read_json_file
     File.open("email.json", "a+") do |f|
       return JSON.parse(f.read)[:content.to_s] rescue ""
